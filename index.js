@@ -4,7 +4,7 @@ const app = express()
 app.use(express.json())
 
 morgan.token('content', (req, res) => {
-  if (req.body.name) {
+  if (req.method === 'POST') {
     return JSON.stringify(req.body)
   } else {
     return null
