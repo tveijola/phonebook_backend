@@ -23,9 +23,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 if (process.argv.length < 5) {
   Person.find({}).then(result => {
     console.log('Phonebook:')
-    result.forEach(person => {
-      console.log(person.name, person.number)
-    })
+    result.forEach(person => console.log(person.name, person.number))
     mongoose.connection.close()
   })
 } else {
@@ -36,13 +34,8 @@ if (process.argv.length < 5) {
     number: number,
   })
 
-  note.save().then(result => {
+  note.save().then(() => {
     console.log(`Added ${name} number ${number} to phonebook`)
     mongoose.connection.close()
   })
 }
-
-
-
-
-
